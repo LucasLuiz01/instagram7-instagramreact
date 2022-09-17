@@ -1,13 +1,15 @@
 import catanacomics from "./img/catanacomics.svg"
+import React from "react"
 function Propusuario (props){
+    const [nome, setNome] = React.useState("catana") 
     return(
 <div class="usuario">
 <img src={props.imagem}/>
 <div class="texto">
-    <strong>{props.nome}</strong>
+    <strong>{props.nomes}</strong>
     <span>
-        Catana
-        <ion-icon name="pencil" ></ion-icon>
+        {nome}
+        <ion-icon name="pencil" onClick={()=> setNome(prompt("Você é um robo!"))}></ion-icon>
     </span>
 </div>
 </div>
@@ -15,7 +17,8 @@ function Propusuario (props){
 }
 export default function Usuario(){
     return (
-       <Propusuario imagem= {catanacomics} nome= "catacomics" />
+       <Propusuario imagem= {catanacomics} nomes= "catacomics" />
     )
 }
 
+   
