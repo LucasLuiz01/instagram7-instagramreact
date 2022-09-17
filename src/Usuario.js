@@ -2,9 +2,10 @@ import catanacomics from "./img/catanacomics.svg"
 import React from "react"
 function Propusuario (props){
     const [nome, setNome] = React.useState("catana") 
+    const [foto, setFoto] = React.useState(catanacomics)
     return(
 <div class="usuario">
-<img src={props.imagem}/>
+<img src={foto} onClick={()=> setFoto (prompt("Insira o link da sua foto aqui"))} />
 <div class="texto">
     <strong>{props.nomes}</strong>
     <span>
@@ -17,7 +18,7 @@ function Propusuario (props){
 }
 export default function Usuario(){
     return (
-       <Propusuario imagem= {catanacomics} nomes= "catacomics" />
+       <Propusuario nomes= "catacomics" />
     )
 }
 
