@@ -5,12 +5,17 @@ import gato from "./img/gato-telefone.svg"
 import respondeai from "./img/respondeai.svg"
 import React from "react"
 function Postprops (props){
+    const [contador, setContador] = React.useState(Number(props.curtidas));
     const [salvar, setSalvar] = React.useState("bookmark-outline");
     const [like, setLike] = React.useState("heart-outline");
     const [vermelho, setVermelho] = React.useState("none");
     function liked(){
         (like==="heart-outline") ? setLike("heart") : setLike("heart-outline");
         (vermelho==="none") ? setVermelho("danger") : setVermelho("none");
+        (vermelho==="none") ? setContador(contador + 0.001) : setContador(contador - 0.001);
+    }
+    function salvarpost(){
+        (salvar==="bookmark-outline") ? setSalvar("bookmark") : setSalvar("bookmark-outline");
     }
     return (
         <div class="post">
@@ -35,14 +40,14 @@ function Postprops (props){
                     <ion-icon name="paper-plane-outline"></ion-icon>
                 </div>
                 <div>
-                    <ion-icon  name={salvar}onClick={()=>setSalvar("bookmark")}></ion-icon>
+                    <ion-icon  name={salvar}onClick={salvarpost}></ion-icon>
                 </div>
             </div>
 
             <div class="curtidas">
                 <img src={props.perfilCurtidasImagem} />
                 <div class="texto">
-                    Curtido por <strong>{props.textoCurtida}</strong> e <strong>{props.curtidas}</strong>
+                    Curtido por <strong>{props.textoCurtida}</strong> e <strong>outras {Number(contador)} pessoas</strong>
                 </div>
             </div>
         </div>
@@ -51,8 +56,8 @@ function Postprops (props){
 }
 export default function Posts() {
     const dados = [
-        {nome:"adorable_animals", imagem : adorable, conteudoImagem : gato, perfilCurtidasImagem : respondeai, textoCurtida : "respondeai", curtidas : `outras 101.523 pessoas`},
-        {nome:"barked", imagem : barked, conteudoImagem : dog, perfilCurtidasImagem : adorable, textoCurtida : "adorable_animals", curtidas : `outras 200.541 pessoas`}
+        {nome:"adorable_animals", imagem : adorable, conteudoImagem : gato, perfilCurtidasImagem : respondeai, textoCurtida : "respondeai", curtidas :  "101.523"},
+        {nome:"barked", imagem : barked, conteudoImagem : dog, perfilCurtidasImagem : adorable, textoCurtida : "adorable_animals", curtidas : "200.541"}
     ]
     return (
         <div class="posts">
