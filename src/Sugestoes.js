@@ -17,20 +17,20 @@ export default function Sugestoes() {
                 Sugestões para você
                 <div>Ver tudo</div>
             </div>
-            {seguidores.map((s)=>
-              <div class="sugestao">
-              <div class="usuario">
-                  <img src={s.imagem} />
-                  <div class="texto">
-                      <div class="nome">{s.nome}</div>
-                      <div class="razao">Segue você</div>
-                  </div>
-              </div>
+            {seguidores.map((s) =>
+                <div class="sugestao">
+                    <div class="usuario">
+                        <img src={s.imagem} />
+                        <div class="texto">
+                            <div class="nome">{s.nome}</div>
+                            <div class="razao">Segue você</div>
+                        </div>
+                    </div>
 
-              <div class="seguir">Seguir</div>
-          </div>
+                    <div class="seguir">Seguir</div>
+                </div>
             )}
-          
+
         </div>
     )
 }
